@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -q -y \
     assimp-utils \
     nano \
     xvfb\
+    libomp-dev\
     clang-5.0 \
     && rm -rf /var/lib/apt/lists/*
 
@@ -39,4 +40,4 @@ RUN echo "----------"
 WORKDIR /devel/meshlab/src
 #RUN  qmake -qt=5 meshlab_mini.pro $QMAKE_FLAGS && make $MAKE_FLAGS
 RUN qmake -qt=5 meshlab_full.pro $QMAKE_FLAGS && make $MAKE_FLAGS
-
+ENV PATH="/devel/meshlab/src/distrib:${PATH}"
